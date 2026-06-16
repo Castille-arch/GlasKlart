@@ -1,0 +1,92 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* GlasKlart brand palette */
+  --pane: #1F8A9E;
+  --pane-dark: #156778;
+  --pane-light: #5FB9CC;
+  --frost: #BFDCE3;
+  --slate: #142430;
+  --copper: #C5793E;
+  --mist: #6F8893;
+  --ice: #F4F9FB;
+
+  /* Semantic tokens */
+  --color-bg: #EEF5F7;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F4F9FB;
+  --color-border: #D4E5EA;
+  --color-primary: var(--pane);
+  --color-primary-hover: var(--pane-dark);
+  --color-primary-dim: rgba(31, 138, 158, 0.1);
+  --color-accent: var(--copper);
+  --color-accent-dim: rgba(197, 121, 62, 0.1);
+  --color-text: var(--slate);
+  --color-text-muted: var(--mist);
+  --color-text-subtle: #9BB4BC;
+  --color-danger: #C0392B;
+  --color-warning: var(--copper);
+  --color-success: #1F8A9E;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 4px 20px rgba(20, 36, 48, 0.08);
+  --shadow-sm: 0 1px 4px rgba(20, 36, 48, 0.05);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}

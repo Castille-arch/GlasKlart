@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GlasKlart — Brand Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --ice:#F4F9FB;
+    --pane:#1F8A9E;
+    --pane-dark:#156778;
+    --pane-light:#5FB9CC;
+    --frost:#BFDCE3;
+    --slate:#142430;
+    --copper:#C5793E;
+    --mist:#6F8893;
+    --white:#FFFFFF;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ice);
+    color:var(--slate);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  .section{padding:64px 0;border-bottom:1px solid #DCE9EC;}
+  .section:last-child{border-bottom:none;}
+  .section-head{display:flex;align-items:center;gap:14px;margin-bottom:34px;}
+  .num-tag{
+    display:flex;align-items:center;justify-content:center;
+    width:30px;height:30px;flex:0 0 30px;
+    background:var(--slate);color:var(--ice);
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
+    transform:rotate(45deg);
+  }
+  .num-tag span{transform:rotate(-45deg);}
+  .section-head h2{font-size:22px;font-weight:600;letter-spacing:-0.01em;}
+  .section-sub{color:var(--mist);font-size:14px;margin:6px 0 0 44px;max-width:560px;line-height:1.5;}
+
+  .hero{
+    background:linear-gradient(155deg,var(--slate) 0%,#1B3340 100%);
+    color:var(--ice);
+    padding:80px 28px 70px;
+    text-align:center;
+  }
+  .hero .mark{width:96px;height:96px;margin:0 auto 28px;display:block;}
+  .hero h1{font-size:42px;letter-spacing:-0.02em;color:var(--white);}
+  .hero h1 b{color:var(--pane-light);font-weight:700;}
+  .hero p{margin:14px 0 0;color:var(--frost);font-size:15px;letter-spacing:0.01em;}
+  .hero .tag-sv{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mist);margin-top:20px;}
+
+  .frame{
+    background:var(--white);
+    border:1px solid #DCE9EC;
+    border-radius:var(--radius);
+    padding:36px;
+  }
+  .frame.dark{background:var(--slate);border-color:var(--slate);}
+  .row{display:flex;gap:20px;flex-wrap:wrap;}
+
+  .lockup{display:flex;align-items:center;gap:14px;}
+  .lockup .mark-sm{width:44px;height:44px;flex:0 0 44px;}
+  .wordmark{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.01em;}
+  .wordmark .glas{color:var(--slate);}
+  .wordmark .klart{color:var(--pane);font-weight:700;}
+  .frame.dark .wordmark .glas{color:var(--frost);}
+  .frame.dark .wordmark .klart{color:var(--pane-light);}
+  .frame-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mist);
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:18px;
+  }
+  .frame.dark .frame-label{color:var(--frost);opacity:0.7;}
+  .lockup-col{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;}
+
+  .palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;}
+  .swatch{
+    border-radius:10px;overflow:hidden;border:1px solid #DCE9EC;cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .swatch:hover{transform:translateY(-2px);}
+  .swatch .fill{height:88px;}
+  .swatch .meta{padding:12px 14px;background:var(--white);}
+  .swatch .meta .name{font-size:13px;font-weight:600;}
+  .swatch .meta .hex{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mist);margin-top:2px;}
+  .swatch .meta .use{font-size:11px;color:var(--mist);margin-top:6px;line-height:1.4;}
+
+  .type-row{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #EAF1F3;padding:18px 0;gap:20px;}
+  .type-row:last-child{border-bottom:none;}
+  .type-row .label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mist);width:140px;flex:0 0 140px;text-transform:uppercase;letter-spacing:0.05em;}
+  .type-row .sample{flex:1;}
+
+  .app-icon{
+    width:96px;height:96px;border-radius:24px;
+    background:linear-gradient(160deg,var(--pane) 0%,var(--slate) 100%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(20,36,48,0.18);
+  }
+  .app-icon img, .app-icon svg{width:54px;height:54px;}
+  .browser-tab{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#E7EEF0;border-radius:8px 8px 0 0;padding:9px 14px 9px 10px;
+    font-size:12px;color:var(--slate);border:1px solid #DCE9EC;border-bottom:none;
+  }
+  .browser-tab .fav{width:14px;height:14px;}
+
+  .btn{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:13px;
+    padding:11px 20px;border-radius:9px;border:none;cursor:pointer;display:inline-block;
+  }
+  .btn-primary{background:var(--pane);color:var(--white);}
+  .btn-secondary{background:transparent;color:var(--pane-dark);border:1.5px solid var(--pane);}
+  .btn-ghost{background:transparent;color:var(--mist);}
+  .field{display:flex;flex-direction:column;gap:6px;max-width:260px;}
+  .field label{font-size:12px;color:var(--mist);font-weight:500;}
+  .field input{
+    padding:11px 13px;border-radius:9px;border:1.5px solid #DCE9EC;
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--slate);background:var(--white);
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;
+    padding:5px 10px;border-radius:99px;background:#FBEFE3;color:var(--copper);
+  }
+  .chip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--copper);}
+  .booking-card{
+    background:var(--white);border:1px solid #DCE9EC;border-radius:12px;padding:18px;max-width:320px;
+  }
+  .booking-card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+  .booking-card h4{font-family:'Space Grotesk',sans-serif;font-size:15px;margin:0 0 2px;}
+  .booking-card .meta{font-size:12px;color:var(--mist);}
+  .booking-card .price{font-family:'JetBrains Mono',monospace;font-size:14px;margin-top:12px;color:var(--slate);}
+
+  .pattern-strip{
+    height:120px;border-radius:10px;
+    background-color:var(--slate);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpolygon points='20,2 38,20 20,38 2,20' fill='none' stroke='%235FB9CC' stroke-opacity='0.35' stroke-width='1'/%3E%3C/svg%3E");
+  }
+  pre.code{
+    background:var(--slate);color:var(--frost);font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;padding:18px;border-radius:10px;overflow-x:auto;line-height:1.6;
+  }
+
+  .biz-card{
+    width:320px;height:184px;border-radius:14px;background:var(--white);border:1px solid #DCE9EC;
+    padding:24px;display:flex;flex-direction:column;justify-content:space-between;
+    box-shadow:0 10px 30px rgba(20,36,48,0.08);
+  }
+  .biz-card .person{font-size:14px;font-weight:600;}
+  .biz-card .role{font-size:11px;color:var(--mist);margin-top:2px;}
+  .biz-card .contact{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--mist);line-height:1.6;}
+  .avatar-banner{
+    width:320px;border-radius:14px;overflow:hidden;border:1px solid #DCE9EC;
+  }
+  .avatar-banner .band{height:64px;background:linear-gradient(120deg,var(--slate),var(--pane-dark));}
+  .avatar-banner .body{background:var(--white);padding:0 18px 18px;position:relative;}
+  .avatar-banner .circle{
+    width:62px;height:62px;border-radius:50%;background:var(--slate);
+    border:4px solid var(--white);margin-top:-31px;display:flex;align-items:center;justify-content:center;
+  }
+  .avatar-banner .circle svg{width:34px;height:34px;}
+  .avatar-banner .handle{font-size:13px;font-weight:600;margin-top:10px;}
+  .avatar-banner .sub{font-size:11px;color:var(--mist);}
+
+  footer{padding:40px 28px 70px;text-align:center;color:var(--mist);font-size:12px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,6 94,50 50,50" fill="#1F8A9E"/>
+    <polygon points="94,50 50,94 50,50" fill="#BFDCE3"/>
+    <polygon points="50,94 6,50 50,50" fill="#142430"/>
+    <polygon points="6,50 50,6 50,50" fill="#C5793E"/>
+    <line x1="50" y1="6" x2="50" y2="94" stroke="#F4F9FB" stroke-opacity="0.45" stroke-width="1.2"/>
+    <line x1="6" y1="50" x2="94" y2="50" stroke="#F4F9FB" stroke-opacity="0.45" stroke-width="1.2"/>
+    <polygon points="50,6 94,50 50,50 6,50" fill="none" stroke="#0E1B24" stroke-opacity="0.25" stroke-width="1.5"/>
+  </svg>
+  <h1>Glas<b>Klart</b></h1>
+  <p>Brand kit — logo, color, type, and UI building blocks for the app &amp; site</p>
+  <div class="tag-sv">"klar sikt, varje gång" — clear view, every time</div>
+</div>
+
+<div class="wrap">
+
+  <div class="section">
+    <div class="section-head"><div class="num-tag"><span>01</span></div><h2>Primary logo</h2></div>
+    <div class="section-sub">Horizontal lockup for headers, letterheads, and wide app bars.</div>
+    <div class="row">
+      <div class="frame" style="flex:1;min-width:280px;">
+        <div class="frame-label">On light</div>
+        <div class="lockup">
+          <svg class="mark-sm" viewBox="0 0 100 100"><polygon points="50,6 94,50 50,50" fill="#1F8A9E"/><polygon points="94,50 50,94 50,50" fill="#BFDCE3"/><polygon points="50,94 6,50 50,50" fill="#142430"/><polygon points="6,50 50,6 50,50" fill="#C5793E"/><line x1="50" y1="6" x2="50" y2="94" stroke="#F4F9FB" stroke-opacity="0.45" stroke-width="1.2"/><line x1="6" y1="50" x2="94" y2="50" stroke="#F4F9FB" stroke-opacity="0.45" stroke-width="1.2"/></svg>
+          <div class="wordmark"><span class="glas">Glas</span><span class="klart">Klart</span></div>
+        </div>
+      </div>
+      <div class="frame dark" style="flex:1;min-width:280px;">
+        <div class="frame-label">On dark</div>
+        <div class="lockup">
+          <svg class="mark-sm" viewBox="0 0 100 100"><polygon points="50,6 94,50 50,50" fill="#5FB9CC"/><polygon points="94,50 50,94 50,50" fill="#BFDCE3"/><polygon points="50,94 6,50 50,50" fill="#0B1820"/><polygon points="6,50 50,6 50,50" fill="#C5793E"/><line x1="50" y1="6" x2="50" y2="94" stroke="#142430" stroke-opacity="0.5" stroke-width="1.2"/><line x1="6" y1="50" x2="94" y2="50" stroke="#142430" stroke-opacity="0.5" stroke-width="1.2"/></svg>
+          <div class="wordmark"><span class="glas">Glas</span><span class="klart">Klart</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div class="num-tag"><span>05</span></div><h2>Color palette</h2></div>
+    <div class="palette">
+      <div class="swatch"><div class="fill" style="background:#1F8A9E;"></div><div class="meta"><div class="name">Pane</div><div class="hex">#1F8A9E</div><div class="use">Primary — buttons, links, active states</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#142430;"></div><div class="meta"><div class="name">Slate</div><div class="hex">#142430</div><div class="use">Text, dark surfaces, wordmark</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#BFDCE3;"></div><div class="meta"><div class="name">Frost</div><div class="hex">#BFDCE3</div><div class="use">Tints, hover states, dividers</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#C5793E;"></div><div class="meta"><div class="name">Copper</div><div class="hex">#C5793E</div><div class="use">Accent — badges, status, warnings</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#F4F9FB;border-bottom:1px solid #eee;"></div><div class="meta"><div class="name">Ice</div><div class="hex">#F4F9FB</div><div class="use">App background</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#6F8893;"></div><div class="meta"><div class="name">Mist</div><div class="hex">#6F8893</div><div class="use">Secondary text, captions</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>GlasKlart brand kit · v1</footer>
+</body>
+</html>

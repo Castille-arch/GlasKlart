@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GlasKlart — Splash Animation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --pane:#1F8A9E;
+    --pane-light:#5FB9CC;
+    --frost:#BFDCE3;
+    --slate:#142430;
+    --slate-deep:#0B1820;
+    --copper:#C5793E;
+    --ice:#F4F9FB;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    background:#0c1a22;
+    font-family:'Inter',sans-serif;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100vh;
+  }
+
+  .splash{
+    width:340px;height:600px;
+    border-radius:28px;
+    background:radial-gradient(120% 120% at 50% 20%, var(--slate) 0%, var(--slate-deep) 100%);
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:0 30px 70px rgba(0,0,0,0.45);
+  }
+
+  .mark-stage{position:relative;width:120px;height:120px;}
+  .mark-stage svg{position:absolute;top:0;left:0;width:100%;height:100%;}
+
+  .facet{
+    opacity:0;
+    animation-fill-mode:forwards;
+    animation-timing-function:cubic-bezier(.2,.9,.25,1.15);
+  }
+  .f-top{ animation: fly-top .62s ease-out .15s forwards; }
+  .f-right{ animation: fly-right .62s ease-out .28s forwards; }
+  .f-bottom{ animation: fly-bottom .62s ease-out .41s forwards; }
+  .f-left{ animation: fly-left .62s ease-out .54s forwards; }
+
+  @keyframes fly-top{
+    0%{ opacity:0; transform: translate(-26px,-34px) rotate(-18deg) scale(.7); }
+    100%{ opacity:1; transform: translate(0,0) rotate(0) scale(1); }
+  }
+  @keyframes fly-right{
+    0%{ opacity:0; transform: translate(34px,-12px) rotate(18deg) scale(.7); }
+    100%{ opacity:1; transform: translate(0,0) rotate(0) scale(1); }
+  }
+  @keyframes fly-bottom{
+    0%{ opacity:0; transform: translate(20px,34px) rotate(-18deg) scale(.7); }
+    100%{ opacity:1; transform: translate(0,0) rotate(0) scale(1); }
+  }
+  @keyframes fly-left{
+    0%{ opacity:0; transform: translate(-34px,16px) rotate(18deg) scale(.7); }
+    100%{ opacity:1; transform: translate(0,0) rotate(0) scale(1); }
+  }
+
+  .facet-edges{opacity:0;animation: edges-in .4s ease-out .8s forwards;}
+  @keyframes edges-in{ to{ opacity:1; } }
+
+  .shine{
+    transform:translateX(-160%) rotate(20deg);
+    animation: sweep .9s cubic-bezier(.3,.6,.2,1) 1.05s forwards;
+  }
+  @keyframes sweep{ to{ transform:translateX(160%) rotate(20deg); } }
+
+  .word{
+    margin-top:26px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:26px;font-weight:700;
+    letter-spacing:0.55em;
+    opacity:0;
+    color:var(--ice);
+    animation: focus-in .7s ease-out 1.25s forwards;
+  }
+  .word .glas{color:var(--frost);font-weight:600;}
+  .word .klart{color:var(--pane-light);}
+  @keyframes focus-in{
+    0%{ opacity:0; letter-spacing:0.55em; transform:translateY(6px); }
+    100%{ opacity:1; letter-spacing:0.01em; transform:translateY(0); }
+  }
+
+  .tag{
+    margin-top:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.04em;
+    color:#7E9AA4;
+    opacity:0;
+    animation: fade-up .5s ease-out 1.75s forwards;
+  }
+  @keyframes fade-up{ to{ opacity:1; } }
+
+  .loadbar-track{
+    width:120px;height:3px;border-radius:99px;
+    background:rgba(255,255,255,0.08);
+    margin-top:30px;overflow:hidden;
+    opacity:0;
+    animation: fade-up .4s ease-out 1.9s forwards;
+  }
+  .loadbar-fill{
+    height:100%;width:0%;border-radius:99px;
+    background:var(--copper);
+    animation: load-progress 1.8s ease-in-out 2.0s forwards;
+  }
+  @keyframes load-progress{
+    0%{ width:6%; }
+    100%{ width:100%; }
+  }
+
+  .controls{margin-top:26px;display:flex;gap:10px;align-items:center;}
+  .controls button{
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+    background:var(--pane);color:#fff;border:none;border-radius:9px;
+    padding:10px 18px;cursor:pointer;
+  }
+  .note{
+    max-width:340px;margin-top:18px;text-align:center;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#5d7882;line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash">
+  <div class="mark-stage">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <clipPath id="diamondClip">
+          <polygon points="50,6 94,50 50,94 6,50"/>
+        </clipPath>
+        <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <polygon class="facet f-top" points="50,6 94,50 50,50" fill="#5FB9CC"/>
+      <polygon class="facet f-right" points="94,50 50,94 50,50" fill="#BFDCE3"/>
+      <polygon class="facet f-bottom" points="50,94 6,50 50,50" fill="#0B1820"/>
+      <polygon class="facet f-left" points="6,50 50,6 50,50" fill="#C5793E"/>
+
+      <g class="facet-edges">
+        <line x1="50" y1="6" x2="50" y2="94" stroke="#142430" stroke-opacity="0.55" stroke-width="1.4"/>
+        <line x1="6" y1="50" x2="94" y2="50" stroke="#142430" stroke-opacity="0.55" stroke-width="1.4"/>
+        <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="#0B1820" stroke-opacity="0.35" stroke-width="1.5"/>
+      </g>
+
+      <g clip-path="url(#diamondClip)">
+        <rect class="shine" x="-20" y="-20" width="50" height="140" fill="url(#shineGrad)"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="word"><span class="glas">Glas</span><span class="klart">Klart</span></div>
+  <div class="tag">klar sikt, varje gång</div>
+
+  <div class="loadbar-track"><div class="loadbar-fill"></div></div>
+</div>
+
+<div class="controls">
+  <button onclick="replay()">Spela upp igen</button>
+</div>
+<div class="note">
+  Lyft #splash-blocket in i appen. Total körtid ≈ 2,6 s.<br>
+  Byt ut kopparstavelns bredd mot faktisk laddningsstatus om du vill koppla den till datahämtning.
+</div>
+
+<script>
+function replay(){
+  const splash = document.getElementById('splash');
+  const clone = splash.cloneNode(true);
+  splash.replaceWith(clone);
+  clone.id = 'splash';
+}
+</script>
+</body>
+</html>
