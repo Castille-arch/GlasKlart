@@ -1,67 +1,51 @@
 .page {
-  padding: 40px;
-  max-width: 1200px;
+  padding: 20px 16px 24px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .header {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 28px;
-  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 26px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 4px;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--slate);
 }
 
 .newJobBtn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--pane);
   color: #fff;
   border: none;
   border-radius: var(--radius-sm);
-  padding: 10px 18px;
+  padding: 10px 14px;
   font-size: 14px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  transition: background 0.15s, transform 0.1s;
+  cursor: pointer;
+  transition: background 0.15s;
   white-space: nowrap;
 }
 
-.newJobBtn:hover {
-  background: var(--pane-dark);
-  transform: translateY(-1px);
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
+.newJobBtn:hover { background: var(--pane-dark); }
 
 .searchWrap {
   display: flex;
   align-items: center;
   gap: 8px;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: 0 14px;
-  flex: 1;
-  min-width: 220px;
+  padding: 0 12px;
+  margin-bottom: 12px;
   color: var(--color-text-muted);
 }
 
@@ -69,153 +53,136 @@
   background: none;
   border: none;
   outline: none;
-  color: var(--color-text);
+  color: var(--slate);
   width: 100%;
-  padding: 10px 0;
+  padding: 11px 0;
   font-size: 14px;
+  font-family: 'Inter', sans-serif;
 }
 
-.search::placeholder {
-  color: var(--color-text-muted);
-}
+.search::placeholder { color: var(--color-text-subtle); }
 
-.filters {
+.filterScroll {
   display: flex;
-  gap: 4px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 4px;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.filterBtn {
-  background: none;
-  border: none;
-  color: var(--color-text-muted);
-  padding: 6px 14px;
-  border-radius: 5px;
+.filterScroll::-webkit-scrollbar { display: none; }
+
+.filterChip {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  padding: 7px 14px;
   font-size: 13px;
   font-weight: 500;
-  transition: background 0.15s, color 0.15s;
-}
-
-.filterBtn:hover {
-  color: var(--color-text);
-  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: 'Inter', sans-serif;
 }
 
 .filterActive {
-  background: var(--color-primary-dim) !important;
-  color: var(--color-primary) !important;
+  background: rgba(31,138,158,0.1);
+  border-color: var(--pane);
+  color: var(--pane);
 }
 
-.tableWrap {
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  overflow: hidden;
-  overflow-x: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
+.card:hover { border-color: var(--pane); }
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.table th {
-  text-align: left;
+.cardLeft { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+
+.cardId {
   font-size: 11px;
-  font-weight: 600;
   color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--color-border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cardCustomer {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.cardSite {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.table td {
-  padding: 14px 20px;
-  color: var(--color-text);
-  border-bottom: 1px solid var(--color-border);
+.blue   { background: rgba(31,138,158,0.1); color: var(--pane); }
+.green  { background: rgba(191,220,227,0.5); color: var(--pane-dark); }
+.yellow { background: rgba(197,121,62,0.12); color: var(--copper); }
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
 }
 
-.row:last-child td {
-  border-bottom: none;
-}
-
-.row:hover td {
-  background: var(--color-surface-2);
-}
-
-.jobId {
-  font-family: ui-monospace, monospace;
-  font-size: 13px;
-  color: var(--color-text-muted) !important;
-  white-space: nowrap;
-}
-
-.customer {
-  font-weight: 500;
-}
-
-.site {
-  color: var(--color-text-muted) !important;
-  font-size: 13px;
-}
-
-.date {
-  color: var(--color-text-muted) !important;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.actions {
-  text-align: right;
+.cardMeta {
+  font-size: 12px;
+  color: var(--color-text-muted);
 }
 
 .actionBtn {
   background: none;
   border: none;
   color: var(--color-text-muted);
-  padding: 4px;
-  border-radius: 4px;
-  display: inline-flex;
-  transition: color 0.15s;
-}
-
-.actionBtn:hover {
-  color: var(--color-text);
-}
-
-.badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: 3px 10px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.blue {
-  background: rgba(31, 138, 158, 0.1);
-  color: var(--pane);
-}
-
-.green {
-  background: rgba(191, 220, 227, 0.5);
-  color: var(--pane-dark);
-}
-
-.yellow {
-  background: rgba(197, 121, 62, 0.12);
-  color: var(--copper);
+  cursor: pointer;
 }
 
 .empty {
   text-align: center;
-  color: var(--color-text-muted) !important;
-  padding: 48px !important;
+  color: var(--color-text-muted);
+  padding: 48px 0;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .page { padding: 36px 40px; }
 }

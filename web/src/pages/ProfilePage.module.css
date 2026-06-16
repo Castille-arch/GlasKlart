@@ -1,0 +1,118 @@
+.page {
+  padding: 20px 16px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--slate);
+  margin-bottom: 20px;
+}
+
+.profileCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--pane);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.profileName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--slate);
+  margin-bottom: 3px;
+}
+
+.profileEmail {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.roleBadge {
+  display: inline-block;
+  background: rgba(31,138,158,0.1);
+  color: var(--pane);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.menuCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.menuRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.menuRow:last-child { border-bottom: none; }
+.menuRow:hover { background: var(--color-surface-2); }
+
+.menuIcon { font-size: 18px; width: 24px; text-align: center; }
+
+.menuLabel {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.logoutBtn {
+  width: 100%;
+  background: rgba(192,57,43,0.07);
+  color: var(--color-danger);
+  border: 1.5px solid rgba(192,57,43,0.15);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.logoutBtn:hover { background: rgba(192,57,43,0.12); }
+
+@media (min-width: 768px) {
+  .page { padding: 36px 40px; }
+}

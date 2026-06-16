@@ -4,6 +4,8 @@ import SplashScreen from './components/SplashScreen'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import JobsPage from './pages/JobsPage'
+import CalculatePage from './pages/CalculatePage'
+import ProfilePage from './pages/ProfilePage'
 import AppLayout from './layouts/AppLayout'
 
 export default function App() {
@@ -16,9 +18,11 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route element={<AppLayout />}>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/jobs" element={<JobsPage />} />
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/calculate" element={<CalculatePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
